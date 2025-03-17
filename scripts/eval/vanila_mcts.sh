@@ -1,6 +1,6 @@
 #!/bin/bash
 PYTHONPATH=$(pwd) python reason/evaluation/evaluate.py \
-    --LM Qwen2.5-Math-1.5B-Instruct \
+    --LM Qwen2.5-Math-7B-Instruct \
     --RM Qwen2.5-Math-1.5B-Instruct \
     --task_name MATH \
     --temperature 0.7 \

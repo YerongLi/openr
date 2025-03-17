@@ -44,7 +44,7 @@ def _generate_fastchat(
         "prompt": query_str,
         # "temperature": temperature,
         # "n": n,
-        "top_p": top_p,
+        # "top_p": top_p,
         "top_k": top_k,
         "stop_token_ids": stop_token_ids,
         "max_new_tokens": max_new_tokens,

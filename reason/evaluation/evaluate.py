@@ -150,6 +150,8 @@ if __name__ == "__main__":
         )       # Distributes tasks from the test_ds dataset across the worker pool asynchronously and
                 # collects results in any order as they complete. Every worker has a new searching tree as we reset the
                 # tree in solver_fn
+        # print('res_q')
+        # print(res_q)
         for i, (problem_inst, result, output) in enumerate(
             tqdm(res_q, total=len(test_ds))
         ):
