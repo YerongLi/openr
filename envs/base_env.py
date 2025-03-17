@@ -220,8 +220,8 @@ class CoTEnv(BaseEnv):
                 len(processed_act) > 0
                 and processed_act not in text_list
                 # only stop is valid, otherwise the output action is truncated actually
-                # and result.finish_reason[i] == "stop" 
-                and result.finish_reason[i] == "s" 
+                and result.finish_reason[i] == "stop" 
+                # and result.finish_reason[i] == "s" 
             ):
                 text_list.append(processed_act)
                 prob_list.append(logps_avg_by_len[i])
