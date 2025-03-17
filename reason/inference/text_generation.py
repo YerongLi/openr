@@ -34,12 +34,6 @@ def _generate_fastchat(
     ret = requests.post(
         controller_addr + "/get_worker_address", json={"model": model_name}
     )
-    ##DEBUG
-    # print('  ====   ')
-    print(controller_addr)
-    # print('  ====   ')
-    print(ret.json())
-    ##DEBUG
     worker_addr = ret.json()["address"]
     if not worker_addr:
         raise ValueError("Language Model name {} does not exist.".format(model_name))
@@ -48,15 +42,15 @@ def _generate_fastchat(
     gen_params = {
         "model": model_name,
         "prompt": query_str,
-        "temperature": temperature,
-        "n": n,
+        # "temperature": temperature,
+        # "n": n,
         "top_p": top_p,
         "top_k": top_k,
         "stop_token_ids": stop_token_ids,
         "max_new_tokens": max_new_tokens,
-        "stop": stop_str,
-        "echo": False,
-        "include_stop_str_in_output": include_stop_str_in_output,
+        # "stop": stop_str,
+        # "echo": False,
+        # "include_stop_str_in_output": include_stop_str_in_output,
     }
     response = requests.post(
         worker_addr + "/worker_generate",
@@ -64,11 +58,6 @@ def _generate_fastchat(
         json=gen_params,
         stream=True,
     )
-    ##DEBUG
-    print('==== response === ')
-    print(response)
-    ##DEBUG
-    
     results = response.json()
     output_token_lens = results["output_token_len"]
     cum_logps = results["cumulative_logprob"]
