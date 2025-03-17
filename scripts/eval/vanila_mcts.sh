@@ -14,3 +14,4 @@ PYTHONPATH=$(pwd) python reason/evaluation/evaluate.py \
     --controller_addr http://127.0.0.1:28778 \
     --local
     # --controller_addr http://0.0.0.0:28777 \
+    # --num_worker 32 \

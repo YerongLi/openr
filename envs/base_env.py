@@ -220,24 +220,18 @@ class CoTEnv(BaseEnv):
                 len(processed_act) > 0
                 and processed_act not in text_list
                 # only stop is valid, otherwise the output action is truncated actually
-                and result.finish_reason[i] == "stop" 
+                # and result.finish_reason[i] == "stop" 
+                and result.finish_reason[i] == "s" 
             ):
                 text_list.append(processed_act)
                 prob_list.append(logps_avg_by_len[i])
                 num_token_list.append(token_len[i])
                 finish_reason_list.append(result.finish_reason[i])
                 next_state_terminated[processed_act] = terminated
-        print('texts')
-        print(len(texts))
-        print(texts)
-        
+
         if len(prob_list) == 0:
             print_with_rank("state: {}".format(self.get_state()))
             print_with_rank("gen_result: {}".format(result))
-            print('error Branck : texts')
-            print(len(texts))
-            print(texts)
-            print('len(prob_list)', len(prob_list))
             raise NoLegalActionException("No possible action have been generated.")
 
         prob_list = np.exp(prob_list)
