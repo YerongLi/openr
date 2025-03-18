@@ -63,6 +63,9 @@ if __name__ == "__main__":
     # parallel config
     parser.add_argument("--local", action="store_true", default=False)
     parser.add_argument("--num_worker", type=int, default=32)
+    # Experiment config
+    parser.add_argument("--ninstance", type=int, default=None, help="Maximum number of instances to evaluate")
+
     config = parser.parse_args()
 
     setup_seed(config.seed)
@@ -112,6 +115,10 @@ if __name__ == "__main__":
             record_writer = None
 
         test_ds = task.test_ds
+        if config.ninstance is not None:
+            test_ds = [test_ds[i] for i in range(config.ninstance)]
+            
+
         # test_ds = [test_ds[i] for i in range(32)]
 
         results = []
