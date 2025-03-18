@@ -214,14 +214,15 @@ class CoTEnv(BaseEnv):
             # whether the text-generation is stop by the <eos> or stop_str
             
             terminated = not texts[i].endswith(self.sep)
-            print('result.finish_reason[i]')
-            print(result.finish_reason[i])
+            # print('result.finish_reason[i]')
+            # print(result.finish_reason)
             processed_act = self.post_process_act(texts[i])
             if (
                 len(processed_act) > 0
                 and processed_act not in text_list
                 # only stop is valid, otherwise the output action is truncated actually
-                and result.finish_reason[i] == "stop" 
+                # and result.finish_reason[i] == "stop" 
+                and result.finish_reason == "stop" 
                 # and result.finish_reason[i] == "s" 
             ):
                 text_list.append(processed_act)

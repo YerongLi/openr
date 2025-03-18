@@ -48,9 +48,9 @@ def _generate_fastchat(
         "top_k": top_k,
         "stop_token_ids": stop_token_ids,
         "max_new_tokens": max_new_tokens,
-        # "stop": stop_str,
+        "stop": stop_str,
         # "echo": False,
-        # "include_stop_str_in_output": include_stop_str_in_output,
+        "include_stop_str_in_output": include_stop_str_in_output,
     }
     response = requests.post(
         worker_addr + "/worker_generate",
